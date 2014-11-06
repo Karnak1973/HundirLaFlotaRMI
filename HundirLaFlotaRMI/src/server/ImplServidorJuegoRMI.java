@@ -5,14 +5,25 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class ImplServidorJuegoRMI extends UnicastRemoteObject implements IntServidorJuegoRMI {
 
+
+	
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Constructor de la clase
+	 * @throws	RemoteException
+	 */
 	public ImplServidorJuegoRMI() throws RemoteException {
-		super();
+		super(); 
+		System.out.println("Instancio un ImplServidorJuegoRMI");
 	}
-
-	@Override
-	public IntServidorPartidaRMI nuevoGestorPartida() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
+	/**
+	 * Instancia y devuelve un objeto remoto servidor de partida
+	 */
+   public IntServidorPartidaRMI nuevoGestorPartida() throws RemoteException {
+	   return (IntServidorPartidaRMI) new ImplServidorPartidaRMI();
+   }
+   
+   
 }
