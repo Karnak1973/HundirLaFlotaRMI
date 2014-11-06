@@ -18,6 +18,7 @@ public class ImplServidorJuegoRMI extends UnicastRemoteObject implements IntServ
 		System.out.println("Instancio un ImplServidorJuegoRMI");
 	}
 	
+	
 	/**
 	 * Instancia y devuelve un objeto remoto servidor de partida
 	 */
