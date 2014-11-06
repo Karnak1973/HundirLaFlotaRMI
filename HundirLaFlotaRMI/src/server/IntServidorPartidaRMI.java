@@ -1,5 +1,7 @@
 package server;
 
-public class IntServidorPartidaRMI {
+import java.rmi.Remote;
+
+public interface IntServidorPartidaRMI extends Remote {
 
 }
