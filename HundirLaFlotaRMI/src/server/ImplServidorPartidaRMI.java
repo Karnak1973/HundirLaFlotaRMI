@@ -37,4 +37,14 @@ public class ImplServidorPartidaRMI extends UnicastRemoteObject implements IntSe
 		return this.partida.getSolucion();
 	}
 
+	@Override
+	public int getDisparos() throws RemoteException {
+		return partida.getDisparos();
+	}
+
+	@Override
+	public int getQuedan() throws RemoteException {
+		return partida.getQuedan();
+	}
+
 }

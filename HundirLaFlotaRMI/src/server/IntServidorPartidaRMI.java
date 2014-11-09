@@ -10,5 +10,7 @@ public interface IntServidorPartidaRMI extends Remote {
 	public int pruebaCasilla(int numFil, int numCol) throws RemoteException;
 	public String getBarco(int id) throws RemoteException;
 	public String[] getSolucion() throws RemoteException;
+	public int getDisparos() throws RemoteException;
+	public int getQuedan() throws RemoteException;
 	
 }
