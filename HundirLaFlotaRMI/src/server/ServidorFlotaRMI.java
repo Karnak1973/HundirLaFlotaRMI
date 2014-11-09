@@ -22,7 +22,7 @@ public class ServidorFlotaRMI {
 		try {
 			ImplServidorJuegoRMI juegoExportado = new ImplServidorJuegoRMI();
 			arrancaRegistro(Integer.parseInt(numPuertoRMI));
-			URLRegistro = "rmi://localhost:" + numPuertoRMI + "/servidorJuego";
+			URLRegistro = "rmi://localhost:" + numPuertoRMI + "/hundirLaFlota";
 			Naming.rebind(URLRegistro, juegoExportado);
 			System.out.println("El servidor del juego está listo.");
 		} catch (Exception e){
