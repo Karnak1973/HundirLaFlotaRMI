@@ -160,14 +160,9 @@ public class ClienteFlotaRMI {
 		
 		//Anyade la primerqa fila con los numeros
 		casillas.add(new JLabel(""));
-		casillas.add(new JLabel("1",JLabel.CENTER));
-		casillas.add(new JLabel("2",JLabel.CENTER));
-		casillas.add(new JLabel("3",JLabel.CENTER));
-		casillas.add(new JLabel("4",JLabel.CENTER));
-		casillas.add(new JLabel("5",JLabel.CENTER));
-		casillas.add(new JLabel("6",JLabel.CENTER));
-		casillas.add(new JLabel("7",JLabel.CENTER));
-		casillas.add(new JLabel("8",JLabel.CENTER));
+		for(int i=1;i<=NUMCOLUMNAS;i++){
+			casillas.add(new JLabel(""+i,JLabel.CENTER));
+		}
 		casillas.add(new JLabel(""));
 		
 		
