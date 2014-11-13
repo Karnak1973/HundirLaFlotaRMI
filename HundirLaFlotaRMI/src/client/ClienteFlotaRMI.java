@@ -51,19 +51,7 @@ public class ClienteFlotaRMI {
 	 */
 	private void ejecuta() {
 		try {
-			int numPuertoRMI;
-			String nombreNodo;
-			InputStreamReader ent = new InputStreamReader(System.in);
-			BufferedReader buf = new BufferedReader(ent);
-			
-			System.out.println("Introduce el nombre del nodo del registro RMI: ");
-			nombreNodo = buf.readLine();
-			
-			System.out.println("Introduce el numero de puerto del registro RMI: ");
-			String numPuerto = buf.readLine();
-			numPuertoRMI = Integer.parseInt(numPuerto);
-			
-			String URLRegistro = "rmi://" + nombreNodo + ":" + numPuerto + "/hundirLaFlota";
+			String URLRegistro = "rmi://localhost:1099/hundirLaFlota";
 			sj = (IntServidorJuegoRMI)Naming.lookup(URLRegistro);
 			System.out.println("Busqueda completa.");
 			

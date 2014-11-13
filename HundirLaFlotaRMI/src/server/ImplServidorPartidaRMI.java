@@ -14,12 +14,11 @@ public class ImplServidorPartidaRMI extends UnicastRemoteObject implements IntSe
 	}
 
 	@Override
-	public Partida nuevaPartida(int numFilas, int numCols, int numBarcos)
+	public void nuevaPartida(int numFilas, int numCols, int numBarcos)
 			throws RemoteException {
 		
-		Partida partida = new Partida(numFilas, numCols, numBarcos);
+		this.partida = new Partida(numFilas, numCols, numBarcos);
 		
-		return partida;
 	}
 
 	@Override
