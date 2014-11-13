@@ -1,6 +1,10 @@
 package common;
 
-public class Barco {	
+public class Barco implements java.io.Serializable{	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4900888520760166848L;
 	/**
 	 * Clase para guardar la informacion de un barco en una partida de 'Hundir la flota'
 	 */

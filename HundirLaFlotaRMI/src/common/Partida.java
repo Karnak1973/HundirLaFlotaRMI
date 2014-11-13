@@ -3,8 +3,13 @@ package common;
 import java.util.Random;
 import java.util.Vector;
 
-public class Partida {
+public class Partida implements java.io.Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6319369283171593017L;
+
 	private static final int AGUA = -1, TOCADO = -2, HUNDIDO = -3;
 	
 	/**
