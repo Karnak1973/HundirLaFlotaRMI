@@ -217,12 +217,12 @@ public class ClienteFlotaRMI {
 				int t = Integer.parseInt(datosBarco[3]);
 				
 				if(datosBarco[2].equals("V")) {
-					for(int j = 0; i < t; i++) {
-						buttons[fi + i][ci].setBackground(Color.red);
+					for(int j = 0; j < t; j++) {
+						buttons[fi + j][ci].setBackground(Color.red);
 					}
 				} else {
-					for(int j = 0; i < t; i++) {
-						buttons[fi][ci + i].setBackground(Color.red);
+					for(int j = 0; j < t; j++) {
+						buttons[fi][ci + j].setBackground(Color.red);
 						
 					}
 				}
