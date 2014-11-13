@@ -141,7 +141,7 @@ public class ClienteFlotaRMI {
 	 */
 	
 	private void anyadeMenuCallback() {
-		MenuListener e = new MenuListener();
+		CallbackMenuListener e = new CallbackMenuListener();
 		
 		
 		JMenu menu = new JMenu("Opciones Callback");
@@ -323,22 +323,7 @@ public class ClienteFlotaRMI {
 				muestraSolucion();
 				break;
 				
-			case "propon":	
-				//IntCallbackCliente callback=
-				//sj.proponPartida(nombreJugador, objCallbackCliente);
-				break;
-				
-			case "borrar":
-				//sj.borraPartida(nombreJugador);
-				break;
-				
-			case "listaPartidas":
-				//sj.listaPartidas();
-				break;
-				
-			case "aceptaPartida":
-				//sj.aceptaPartida(nombreJugador, nombreRival);
-				break;
+			
 				
 			}
 			
@@ -416,6 +401,32 @@ public class ClienteFlotaRMI {
 		
 	} // end class ButtonListener
 	
-	
+	private class CallbackMenuListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			String opcion=e.getActionCommand();
+			switch(opcion){
+			case "propon":	
+				//IntCallbackCliente callback=
+				//sj.proponPartida(nombreJugador, objCallbackCliente);
+				break;
+				
+			case "borrar":
+				//sj.borraPartida(nombreJugador);
+				break;
+				
+			case "listaPartidas":
+				//sj.listaPartidas();
+				break;
+				
+			case "aceptaPartida":
+				//sj.aceptaPartida(nombreJugador, nombreRival);
+				break;
+			}
+		}
+		
+	}
 
 } // end class Juego
