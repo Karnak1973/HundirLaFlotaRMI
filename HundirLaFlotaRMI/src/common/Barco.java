@@ -1,6 +1,6 @@
 package common;
 
-public class Barco implements java.io.Serializable{	
+public class Barco {	
 	/**
 	 * 
 	 */

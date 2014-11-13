@@ -3,7 +3,7 @@ package common;
 import java.util.Random;
 import java.util.Vector;
 
-public class Partida implements java.io.Serializable {
+public class Partida {
 	
 	/**
 	 * 
