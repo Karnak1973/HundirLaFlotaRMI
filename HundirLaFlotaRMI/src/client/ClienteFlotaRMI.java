@@ -33,6 +33,7 @@ public class ClienteFlotaRMI {
 	private JButton buttons[][] = null; // Botones asociados a las casillas de la partida
 	private IntServidorJuegoRMI sj;
 	private IntServidorPartidaRMI partida;
+	JMenuBar mb;
 	
 	/** Atributos de la partida en juego */
 	private int numFilas, numColumnas, numBarcos, quedan, disparos;
@@ -80,8 +81,11 @@ public class ClienteFlotaRMI {
 		frame = new JFrame();
 		frame.setLayout(new BorderLayout());
 		frame.setVisible(true);
+		mb = new JMenuBar();
+		frame.setJMenuBar(mb);
 		
 		anyadeMenu();	//Invoca al metodo que anyade los botones del menu
+		anyadeMenuCallback(); //Invoca al metodo que anyade los botones del menu Callback
 		
 		anyadeGrid(NUMFILAS, NUMCOLUMNAS);  //Invoca al metodo que anyade los botones del mar
 		
@@ -108,8 +112,6 @@ public class ClienteFlotaRMI {
 	private void anyadeMenu() {
 		MenuListener e = new MenuListener();
 		
-		JMenuBar mb = new JMenuBar();
-		frame.setJMenuBar(mb);
 		
 		JMenu menu = new JMenu("Opciones");
 		mb.add(menu);
@@ -133,6 +135,43 @@ public class ClienteFlotaRMI {
 		
 	} 
 
+
+	/**
+	 * Anyade el menu de opciones Callback del juego
+	 */
+	
+	private void anyadeMenuCallback() {
+		MenuListener e = new MenuListener();
+		
+		
+		JMenu menu = new JMenu("Opciones Callback");
+		mb.add(menu);
+		
+		//Añadimos las 3 opciones al menu, les asignamos el escuchador y la acción que realizan.
+		
+		JMenuItem proponerPartida = new JMenuItem("Propon partida");
+		proponerPartida.setActionCommand("propon");
+		proponerPartida.addActionListener(e);
+		menu.add(proponerPartida);
+		
+		JMenuItem borrarPartida = new JMenuItem("Borra partida");
+		borrarPartida.setActionCommand("borrar");
+		borrarPartida.addActionListener(e);
+		menu.add(borrarPartida);
+		
+		JMenuItem listaPartidas = new JMenuItem("Lista de partidas");
+		listaPartidas.setActionCommand("listaPartidas");
+		listaPartidas.addActionListener(e);
+		menu.add(listaPartidas);
+		
+		JMenuItem aceptaPartida = new JMenuItem("Aceptar Partida");
+		aceptaPartida.setActionCommand("aceptaPartida");
+		aceptaPartida.addActionListener(e);
+		menu.add(aceptaPartida);
+	} 
+	
+	
+	
 	/**
 	 * Anyade el panel con las casillas del mar y sus etiquetas.
 	 * Cada casilla sera un boton con su correspondiente escuchador
@@ -282,6 +321,23 @@ public class ClienteFlotaRMI {
 			
 			case "solucion":
 				muestraSolucion();
+				break;
+				
+			case "propon":	
+				//IntCallbackCliente callback=
+				//sj.proponPartida(nombreJugador, objCallbackCliente);
+				break;
+				
+			case "borrar":
+				//sj.borraPartida(nombreJugador);
+				break;
+				
+			case "listaPartidas":
+				//sj.listaPartidas();
+				break;
+				
+			case "aceptaPartida":
+				//sj.aceptaPartida(nombreJugador, nombreRival);
 				break;
 				
 			}
