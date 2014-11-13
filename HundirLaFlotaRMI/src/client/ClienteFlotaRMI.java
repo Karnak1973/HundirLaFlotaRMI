@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
+import java.util.Scanner;
 
 import javax.swing.*;
 
@@ -33,7 +34,8 @@ public class ClienteFlotaRMI {
 	private JButton buttons[][] = null; // Botones asociados a las casillas de la partida
 	private IntServidorJuegoRMI sj;
 	private IntServidorPartidaRMI partida;
-	JMenuBar mb;
+	private JMenuBar mb;
+	private String nombreUsuario;
 	
 	/** Atributos de la partida en juego */
 	private int numFilas, numColumnas, numBarcos, quedan, disparos;
@@ -59,6 +61,11 @@ public class ClienteFlotaRMI {
 			//Obtenemos la partida.
 			
 			partida = sj.nuevoGestorPartida();
+			
+			//El usuario elije un nombre
+			BufferedReader teclado=new BufferedReader(new InputStreamReader(System.in));
+			System.out.println("Introduce nombre de usuario");
+			this.nombreUsuario=teclado.readLine();
 			
 		} catch (Exception e) {
 			System.out.println("Excepción en ClienteFlotaRMI.ejecuta: " + e);
@@ -408,17 +415,47 @@ public class ClienteFlotaRMI {
 			// TODO Auto-generated method stub
 			String opcion=e.getActionCommand();
 			switch(opcion){
+			
 			case "propon":	
-				//IntCallbackCliente callback=
-				//sj.proponPartida(nombreJugador, objCallbackCliente);
+				IntCallbackCliente objCallback;
+				try {
+					objCallback = new ImpCallbackCliente();
+				
+				try {
+					if(sj.proponPartida(nombreUsuario, objCallback)==true){
+						System.out.println("Partida creada");
+					}else{
+						System.out.println("Error al crear partida");
+					}
+				} catch (RemoteException e1) {
+					e1.printStackTrace();
+				}
+				}catch(RemoteException ex){
+					ex.printStackTrace();
+				}
 				break;
 				
 			case "borrar":
-				//sj.borraPartida(nombreJugador);
+				try {
+					if(sj.borraPartida(nombreUsuario)==true){
+						System.out.println("Partida borrada");
+					}else{
+						System.out.println("No se ha podido borrar la partida porque el cliente no ha creado ninguna");
+					}
+				} catch (RemoteException e1) {
+					e1.printStackTrace();
+				}
 				break;
 				
 			case "listaPartidas":
-				//sj.listaPartidas();
+				try {
+					String[] listaPartidas=sj.listaPartidas();
+					for(String partida:listaPartidas){
+						System.out.println(partida);
+					}
+				} catch (RemoteException e1) {
+					e1.printStackTrace();
+				}
 				break;
 				
 			case "aceptaPartida":
