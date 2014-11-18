@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
@@ -459,7 +460,19 @@ public class ClienteFlotaRMI {
 				break;
 				
 			case "aceptaPartida":
-				//sj.aceptaPartida(nombreJugador, nombreRival);
+				System.out.println("Introduce nombre de usuario");
+				BufferedReader teclado=new BufferedReader(new InputStreamReader(System.in));
+				String nombreRival;
+				try {
+					nombreRival = teclado.readLine();
+					if(sj.aceptaPartida(nombreUsuario, nombreRival)){
+						System.out.println("La partida ha sido aceptada con el rival "+nombreRival);
+					}else{
+						System.out.println("La partida no ha podido crearse");
+					}
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 				break;
 			}
 		}

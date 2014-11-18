@@ -184,7 +184,6 @@ public class Partida {
                 }
             } // end if H o V
         } // end while
-        System.out.println("barcooo");
         return new Barco(fila, col, orientacion, tam);
 	}
 	
