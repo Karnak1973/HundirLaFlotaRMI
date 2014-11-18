@@ -28,7 +28,7 @@ public class ClienteFlotaRMI {
 	private static final int AGUA = -1, TOCADO = -2, HUNDIDO = -3;
 	
 	/** Parametros por defecto de una partida */
-	private static final int NUMFILAS=8, NUMCOLUMNAS=8, NUMBARCOS=6;
+	private static final int NUMFILAS = 8, NUMCOLUMNAS = 8, NUMBARCOS = 6;
 
 	private JFrame frame = null;        // Tablero de juego
 	private JLabel estado = null;       // Texto en el panel de estado
@@ -86,7 +86,7 @@ public class ClienteFlotaRMI {
 	 * Dibuja el tablero de juego y crea la partida inicial
 	 */
 	private void dibujaTablero() {
-		frame = new JFrame();
+		frame = new JFrame(nombreUsuario);
 		frame.setLayout(new BorderLayout());
 		frame.setVisible(true);
 		mb = new JMenuBar();
@@ -320,6 +320,21 @@ public class ClienteFlotaRMI {
 			String opcion=e.getActionCommand();
 			switch(opcion){
 			case"salir":
+				String[] listaPartidas;
+				try {
+					listaPartidas = sj.listaPartidas();
+					
+					for (int i = 0; i < listaPartidas.length; i++) {
+						if(listaPartidas[i].equals(nombreUsuario)) {
+							sj.borraPartida(nombreUsuario);
+							break;
+						}
+					}
+				} catch (RemoteException e1) {
+					e1.printStackTrace();
+				}
+				
+				
 				System.exit(0);
 				break;
 			
@@ -461,7 +476,7 @@ public class ClienteFlotaRMI {
 				
 			case "aceptaPartida":
 				System.out.println("Introduce nombre de usuario");
-				BufferedReader teclado=new BufferedReader(new InputStreamReader(System.in));
+				BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
 				String nombreRival;
 				try {
 					nombreRival = teclado.readLine();
